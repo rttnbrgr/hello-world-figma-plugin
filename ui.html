@@ -1,17 +1,60 @@
-<h2>Rectangle Creator</h2>
-<p>Count: <input id="count" value="5"></p>
-<button id="create">Create</button>
-<button id="cancel">Cancel</button>
+<style>
+  body {
+    background: #40f6cb;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  p,
+  h2,
+  button {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Helvetica, sans-serif;
+    line-height: 28px;
+    color: black;
+  }
+  h2 {
+    color: #40f6cb;
+    background: black;
+    display: inline-block;
+  }
+  button {
+    padding: 8px;
+  }
+
+  button + button {
+    margin-left: 24px;
+  }
+
+  button.primary {
+    color: #40f6cb;
+    background: black;
+    border: none;
+  }
+  button.secondary {
+    border: 3px solid black;
+  }
+</style>
+<div>
+  <h2>Generate Color Sheet</h2>
+  <p>
+    This Plugin will generate a collection of all unique colors in your
+    document.
+  </p>
+  <p>/* This is only a demo */</p>
+</div>
+<div>
+  <button id="getColors" class="primary">Get Colors</button>
+  <button id="cancel" class="secondary">Cancel</button>
+</div>
 <script>
+  document.getElementById("cancel").onclick = () => {
+    parent.postMessage({ pluginMessage: { type: "cancel" } }, "*");
+  };
 
-document.getElementById('create').onclick = () => {
-  const textbox = document.getElementById('count');
-  const count = parseInt(textbox.value, 10);
-  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
-}
-
-document.getElementById('cancel').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
-}
-
+  document.getElementById("getColors").onclick = () => {
+    parent.postMessage({ pluginMessage: { type: "getColors" } }, "*");
+  };
 </script>
