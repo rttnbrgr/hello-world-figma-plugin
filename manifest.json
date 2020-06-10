@@ -1,0 +1,7 @@
+{
+  "name": "hello-world",
+  "id": "852559748718585897",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html"
+}
